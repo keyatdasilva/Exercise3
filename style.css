@@ -1,35 +1,10 @@
-/* ==================================================================
-   style.css  -  TechNest Product Showcase
 
-   QUICK GUIDE TO THE 3 BIG IDEAS IN THIS EXERCISE:
-
-   TRANSFORM  = changes the SHAPE or POSITION of an element
-                (scale = bigger/smaller, rotate = spin, skew = slant,
-                 translate = move sideways/up/down)
-
-   TRANSITION = makes a change happen SMOOTHLY over time instead of
-                instantly. Example: when you hover, the colour fades
-                to the new colour instead of snapping.
-
-   ANIMATION  = a mini movie you write yourself with @keyframes.
-                It can start by itself, repeat forever, and so on.
-   ================================================================== */
-
-
-/* ==================================================================
-   1. BASIC SETUP
-   ================================================================== */
-
-/* The * means "every element". This removes the browser's default
-   spacing so we start with a clean page. box-sizing makes padding
-   count INSIDE the width, which is easier to work with. */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Makes clicking a menu link scroll smoothly instead of jumping */
 html {
     scroll-behavior: smooth;
 }
@@ -40,14 +15,6 @@ body {
     color: #222222;
 }
 
-
-/* ==================================================================
-   2. LOADING ANIMATION (spinner)
-   ================================================================== */
-
-/* The loader is a cover that sits on top of the whole page.
-   position: fixed + inset: 0 = stretch it over the entire screen.
-   z-index: 1000 = put it in front of everything else. */
 #loader {
     position: fixed;
     inset: 0;
@@ -77,22 +44,17 @@ body {
     animation: blink 1s ease-in-out infinite;
 }
 
-/* @keyframes = write your own animation.
-   "from" is the start, "to" is the end. */
 @keyframes spin {
     from { transform: rotate(0deg); }
     to   { transform: rotate(360deg); }
 }
 
-/* Makes the "Loading..." text fade in and out */
 @keyframes blink {
     0%   { opacity: 1; }
     50%  { opacity: 0.3; }
     100% { opacity: 1; }
 }
 
-/* Fades the loader out, then hides it completely so you can click
-   things behind it. */
 @keyframes hideLoader {
     from { opacity: 1; visibility: visible; }
     to   { opacity: 0; visibility: hidden; }
@@ -105,45 +67,38 @@ body {
     left: 0;
     width: 100%;
     display: flex;
-    justify-content: space-between; /* logo on left, links on right */
+    justify-content: space-between; 
     align-items: center;
     padding: 15px 40px;
     background-color: rgba(27, 31, 59, 0.95);
     z-index: 100;
-
-    /* The menu slides down into view. It starts AFTER the loader is
-       gone (1.6s delay). "backwards" keeps it hidden during the delay. */
     animation: slideDown 0.8s ease-out 1.6s backwards;
 }
 
 @keyframes slideDown {
-    from { transform: translateY(-100%); }   /* start: pushed up out of view */
-    to   { transform: translateY(0); }       /* end: normal position */
+    from { transform: translateY(-100%); }   
+    to   { transform: translateY(0); }       
 }
 
 .logo {
     color: #06f3d3;
     font-size: 1.6rem;
     font-weight: bold;
-    display: flex;          /* transforms need inline-block or block */
-
-    /* TRANSFORM-ORIGIN: the pivot point of the rotation.
-       "bottom left" means the logo tilts as if hinged at its bottom-left corner. */
+    display: flex;          
     transform-origin: bottom left;
     transition: transform 0.4s ease;
 }
 
 .logo:hover {
-    transform: rotate(-8deg) scale(1.1);   /* tilt a little and grow a little */
+    transform: rotate(-8deg) scale(1.1);   
 }
 
 .nav-links {
-    list-style: none;               /* removes the bullet points */
+    list-style: none;               
     display: flex;
     gap: 30px;
 }
 
-/* Each menu item fades in one after the other (ANIMATION-DELAY) */
 .nav-links li {
     animation: fadeIn 0.6s ease-out backwards;
 }
@@ -159,57 +114,44 @@ body {
 .nav-links a {
     color: white;
     text-decoration: none;
-    position: relative;             /* lets us move it with top/left and place the underline */
+    position: relative;             
     top: 0;
     display: inline-block;
     padding-bottom: 4px;
-
-    /* TRANSITIONS: colour fades, and POSITION (top) glides.
-       The comma lets us list more than one thing. */
     transition: color 0.3s ease, top 0.3s ease;
 }
 
-/* The underline is a fake element (::after) that starts with 0 width */
 .nav-links a::after {
     content: "";
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 0;                       /* invisible at the start */
+    width: 0;                       
     height: 3px;
     background-color: #ffb703;
-    transition: width 0.3s ease;    /* SIZE transition */
+    transition: width 0.3s ease;    
 }
 
 .nav-links a:hover {
-    color: #ffb703;                 /* COLOUR transition */
-    top: -4px;                      /* POSITION transition (moves up a little) */
+    color: #ffb703;                 
+    top: -4px;                      
 }
 
 .nav-links a:hover::after {
-    width: 100%;                    /* underline grows to full width */
+    width: 100%;                   
 }
 
 
-/* ==================================================================
-   4. HERO SECTION (animated background)
-   ================================================================== */
-
 .hero {
-    position: relative;             /* so the shapes can be placed inside it */
-    height: 100vh;                  /* vh = % of screen height, so 100vh = full screen */
+    position: relative;             
+    height: 100vh;                  
     min-height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: white;
-    overflow: hidden;               /* hides shapes that stick out of the hero */
-
-    /* ANIMATED BACKGROUND:
-       1. A gradient with 4 colours.
-       2. background-size: 400% makes the gradient MUCH bigger than the box.
-       3. The animation slides it around so the colours seem to flow. */
+    overflow: hidden;               
     background: linear-gradient(-45deg, #ff6b6b, #6c5ce7, #00b4d8, #ffb703);
     background-size: 400% 400%;
     animation: gradientMove 12s ease infinite;
@@ -221,7 +163,6 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* The text sits above the shapes */
 .hero-content {
     position: relative;
     z-index: 2;
@@ -231,8 +172,6 @@ body {
 .hero h1 {
     font-size: 3.5rem;
     margin-bottom: 15px;
-    /* SEQUENCE EFFECT: h1 appears first (1.8s), then the paragraph
-       (2.1s), then the button (2.4s) */
     animation: fadeUp 1s ease-out 1.8s backwards;
 }
 
@@ -242,13 +181,11 @@ body {
     animation: fadeUp 1s ease-out 2.1s backwards;
 }
 
-/* Slides up from below while fading in (translate + opacity) */
 @keyframes fadeUp {
     from { opacity: 0; transform: translateY(40px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ---- CTA BUTTON (CTA = "call to action", the main button) ---- */
 .cta-button {
     display: inline-block;
     padding: 15px 40px;
@@ -259,42 +196,29 @@ body {
     text-decoration: none;
     border-radius: 40px;
     transition: transform 0.3s ease, background-color 0.3s ease;
-
-    /* TWO animations on one element, separated by a comma:
-       1) fadeUp: slides in once
-       2) pulse: repeats forever (starts at 3.4s, after fadeUp finishes) */
     animation:
         fadeUp 1s ease-out 2.4s backwards,
         pulse 2s ease-in-out 3.4s infinite;
 }
 
 .cta-button:hover {
-    transform: scale(1.1);          /* SCALE on hover: 1.1 = 110% size */
+    transform: scale(1.1);          
     background-color: white;
-    animation-play-state: paused;   /* PAUSE the pulse while the mouse is over it */
+    animation-play-state: paused;   
 }
 
-/* The pulse is a glowing ring that grows outwards and fades away.
-   box-shadow: x  y  blur  SPREAD  colour. We animate the SPREAD. */
 @keyframes pulse {
     0%   { box-shadow: 0 0 0 0 rgba(255, 183, 3, 0.8); }
     70%  { box-shadow: 0 0 0 25px rgba(255, 183, 3, 0); }
     100% { box-shadow: 0 0 0 0 rgba(255, 183, 3, 0); }
 }
 
-
-/* ---- DECORATIVE SHAPES in the hero ---- */
-
-/* Every shape is placed with position: absolute, which means
-   "put me exactly where I say inside the hero". */
 .shape {
     position: absolute;
     opacity: 0.25;
     z-index: 1;
 }
 
-/* SKEW TRANSFORM: slants the box sideways like italic text.
-   These are skewed stripes (just decoration, they don't move). */
 .stripe {
     background-color: white;
     height: 100%;
@@ -305,9 +229,6 @@ body {
 .stripe1 { left: 15%; }
 .stripe2 { left: 70%; width: 40px; }
 
-/* Squares that spin slowly.
-   TRANSFORM-ORIGIN: top left means they swing round their top-left
-   corner (like a door on a hinge) instead of spinning on the spot. */
 .square {
     width: 80px;
     height: 80px;
@@ -323,7 +244,6 @@ body {
     to   { transform: rotate(360deg); }
 }
 
-/* Circles that float up and down (TRANSLATE transform) */
 .circle {
     width: 100px;
     height: 100px;
@@ -340,23 +260,17 @@ body {
     100% { transform: translateY(0); }
 }
 
-/* ANIMATION-PLAY-STATE: when the mouse is anywhere over the hero,
-   all the moving shapes freeze. Move the mouse away and they carry on. */
 .hero:hover .square,
 .hero:hover .circle {
     animation-play-state: paused;
 }
 
 
-/* ==================================================================
-   5. PRODUCTS SECTION
-   ================================================================== */
-
 .products {
     max-width: 1200px;
-    margin: 0 auto;                 /* auto left/right = centre the section */
+    margin: 0 auto;                 
     padding: 80px 40px;
-    scroll-margin-top: 40px;        /* stops the fixed menu covering the title when you jump here */
+    scroll-margin-top: 40px;        
 }
 
 .section-title {
@@ -366,8 +280,6 @@ body {
     margin-bottom: 50px;
 }
 
-/* A decorative bar under the title. It is made with ::after
-   and slanted with SKEW. */
 .section-title::after {
     content: "";
     display: block;
@@ -378,17 +290,12 @@ body {
     transform: skew(-30deg);
 }
 
-/* GRID: puts the cards in columns.
-   repeat(auto-fit, minmax(260px, 1fr)) means "fit as many columns as
-   you can, each at least 260px wide". It adjusts for phones automatically. */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 30px;
 }
 
-
-/* ---- THE CARD ---- */
 .card {
     position: relative;
     background-color: white;
@@ -396,26 +303,15 @@ body {
     padding: 35px 25px;
     text-align: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    overflow: hidden;               /* hides the tag while it is off the card */
-
-    /* TRANSITION: when hovering starts/stops, these properties change
-       smoothly over 0.4 seconds */
+    overflow: hidden;             
     transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
-
-    /* SLIDE-IN ANIMATION: each card slides in from the left.
-       "backwards" = stay invisible (the "from" state) while waiting
-       for the delay. Once finished, the card returns to normal, so
-       the hover effect below still works. */
     animation: slideInLeft 0.8s ease-out backwards;
 }
 
-/* Every second card (2, 4, 6) slides in from the RIGHT instead */
 .card:nth-child(even) {
     animation-name: slideInRight;
 }
 
-/* ANIMATION-DELAY for a sequence: each card starts a bit after the last.
-   The loader takes about 2 seconds, so we start after that. */
 .card:nth-child(1) { animation-delay: 2.0s; }
 .card:nth-child(2) { animation-delay: 2.3s; }
 .card:nth-child(3) { animation-delay: 2.6s; }
@@ -424,32 +320,26 @@ body {
 .card:nth-child(6) { animation-delay: 3.5s; }
 
 @keyframes slideInLeft {
-    from { opacity: 0; transform: translateX(-100px); }   /* start: 100px to the left */
+    from { opacity: 0; transform: translateX(-100px); }   
     to   { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes slideInRight {
-    from { opacity: 0; transform: translateX(100px); }    /* start: 100px to the right */
+    from { opacity: 0; transform: translateX(100px); }   
     to   { opacity: 1; transform: translateX(0); }
 }
 
-/* HOVER ANIMATION: the card lifts up (translateY negative = up)
-   and grows (scale), and the shadow gets bigger. */
 .card:hover {
     transform: translateY(-12px) scale(1.05);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
     background-color: #fffaf0;
 }
 
-/* ---- Inside the card ---- */
-
-/* ROTATE TRANSFORM FOR ICONS: the emoji does a full spin when
-   you hover over the card. */
 .icon {
     font-size: 3.5rem;
-    display: inline-block;          /* required for transforms to work */
+    display: inline-block;          
     margin-bottom: 15px;
-    transform-origin: center;       /* spin around the middle */
+    transform-origin: center;      
     transition: transform 0.6s ease;
 }
 
@@ -461,7 +351,7 @@ body {
     font-size: 1.3rem;
     color: #1b1f3b;
     margin-bottom: 8px;
-    transition: color 0.4s ease;    /* COLOUR transition */
+    transition: color 0.4s ease;    
 }
 
 .card:hover h3 {
@@ -474,8 +364,6 @@ body {
     color: #ff6b6b;
 }
 
-/* OPACITY TRANSITION: this text is invisible (opacity: 0) until you
-   hover, then it fades in. */
 .more-info {
     font-size: 0.9rem;
     color: #555555;
@@ -488,8 +376,6 @@ body {
     opacity: 1;
 }
 
-/* POSITION TRANSITION: the tag sits OUTSIDE the card (right: -80px)
-   so you can't see it. On hover it slides in to right: 15px. */
 .tag {
     position: absolute;
     top: 15px;
@@ -507,19 +393,17 @@ body {
     right: 15px;
 }
 
-/* SIZE TRANSITION: the button gets wider on hover (60% to 100%)
-   and changes colour at the same time. */
 .buy-btn {
     display: block;
     width: 60%;
     margin: 0 auto;
     padding: 12px;
-    background-color: #6c5ce7;
+    background-color: #1cc0cc;
     color: white;
     border: none;
     border-radius: 30px;
     font-size: 1rem;
-    cursor: pointer;                /* shows the hand pointer */
+    cursor: pointer;                
     transition: width 0.4s ease, background-color 0.4s ease;
 }
 
@@ -529,10 +413,6 @@ body {
 }
 
 
-/* ==================================================================
-   6. FOOTER
-   ================================================================== */
-
 .footer {
     background-color: #1b1f3b;
     color: white;
@@ -541,11 +421,6 @@ body {
     line-height: 1.8;
 }
 
-
-/* ==================================================================
-   7. SMALL SCREENS (phones)
-   @media rules only apply when the screen is 600px wide or less.
-   ================================================================== */
 
 @media (max-width: 600px) {
     .navbar {
