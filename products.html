@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- The viewport line makes the page fit properly on phones. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheDigitalVault - Product Showcase</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    
+    <div id="loader">
+        <div class="spinner"></div>
+        <p class="loader-text">Loading...</p>
+    </div>
+
+
+    <nav class="navbar">
+        <div class="logo">
+    <svg class="vault-icon" viewBox="0 0 100 100" width="40" height="40"
+         xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vault icon">
+
+        <rect x="8" y="10" width="84" height="76" rx="10"
+              fill="#6c5ce7" stroke="#ffb703" stroke-width="4" />
+
+        <rect x="18" y="20" width="64" height="56" rx="6" fill="#1b1f3b" />
+
+        <circle cx="25" cy="27" r="2.5" fill="#ffb703" />
+        <circle cx="75" cy="27" r="2.5" fill="#ffb703" />
+        <circle cx="25" cy="69" r="2.5" fill="#ffb703" />
+        <circle cx="75" cy="69" r="2.5" fill="#ffb703" />
+
+        <circle cx="50" cy="48" r="20" fill="none" stroke="#ffb703" stroke-width="4" />
+
+        <line x1="50" y1="34" x2="50" y2="62" stroke="#ffb703" stroke-width="3" />
+        <line x1="36" y1="48" x2="64" y2="48" stroke="#ffb703" stroke-width="3" />
+
+        <circle cx="50" cy="48" r="5" fill="#ffb703" />
+
+        <rect x="20" y="86" width="14" height="8" rx="2" fill="#ffb703" />
+        <rect x="66" y="86" width="14" height="8" rx="2" fill="#ffb703" />
+    </svg>
+
+    TheDigitalVault
+</div>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- ============================================================
+         3. HERO SECTION (the big banner at the top)
+         The animated colourful background is done in CSS.
+         The .shape divs are empty boxes that CSS turns into
+         moving decorations.
+         ============================================================ -->
+    <header class="hero" id="home">
+
+        <div class="shape stripe stripe1"></div>
+        <div class="shape stripe stripe2"></div>
+        <div class="shape square square1"></div>
+        <div class="shape square square2"></div>
+        <div class="shape circle circle1"></div>
+        <div class="shape circle circle2"></div>
+        <div class="shape hexagon hexagon1"></div>
+        <div class="shape hexagon hexagon2"></div>
+
+        <div class="hero-content">
+            <h1>Tech That Moves You</h1>
+            <p>Discover our newest gadgets, hand picked for you.</p>
+            <a href="#products" class="cta-button">Shop Now</a>
+        </div>
+    </header>
+
+    <main class="products" id="products">
+        <h2 class="section-title">Featured Products</h2>
+
+        <div class="product-grid">
+
+            <article class="card">
+                <span class="tag">Hot!</span>
+                <div class="icon">🎧</div>
+                <h3>JBL Tune 770NC Noise Cancelling Wireless Over-Ear Headphones - Black</h3>
+                <p class="price">R1699</p>
+                <p class="more-info">30 hour battery and noise cancelling.</p>
+                <button class="buy-btn">Add to Cart</button>
+            </article>
+
+            <article class="card">
+                <span class="tag">New</span>
+                <div class="icon">⌚</div>
+                <h3>HONOR X5i Smart Watch</h3>
+                <p class="price">R999</p>
+                <p class="more-info">Tracks your steps, sleep and heart rate.</p>
+                <button class="buy-btn">Add to Cart</button>
+            </article>
+
+            <article class="card">
+                <span class="tag">Sale</span>
+                <div class="icon">📷</div>
+                <h3>Canon IXUS 285 HS A Digital Camera - Black</h3>
+                <p class="price">R6490</p>
+                <p class="more-info">Waterproof and records in 4K video.</p>
+                <button class="buy-btn">Add to Cart</button>
+            </article>
+
+            <article class="card">
+                <span class="tag">Hot!</span>
+                <div class="icon">🎮</div>
+                <h3>Xbox Series Controller - Carbon Black</h3>
+                <p class="price">R1388</p>
+                <p class="more-info">Works with PC, phone and console.</p>
+                <button class="buy-btn">Add to Cart</button>
+            </article>
+
+            <article class="card">
+                <span class="tag">New</span>
+                <div class="icon">🔊</div>
+                <h3>JBL Flip 7 Portable Waterproof Bluetooth Speaker</h3>
+                <p class="price">R1999</p>
+                <p class="more-info">Loud, clear sound that fits in your bag.</p>
+                <button class="buy-btn">Add to Cart</button>
+            </article>
+
+            <article class="card">
+                <span class="tag">Sale</span>
+                <div class="icon">⌨️</div>
+                <h3>Redragon SURARA Mechanical Full RGB Gaming Keyboard - Black</h3>
+                <p class="price">R609</p>
+                <p class="more-info">Satisfying clicky keys with glowing lights.</p>
+                <button class="buy-btn">Add to Cart</button>
+            </article>
+
+        </div>
+    </main>
+
+    <footer class="footer" id="contact">
+        <p>Contact us: hello@technest.example</p>
+        <p>&copy; 2026 TechNest. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
